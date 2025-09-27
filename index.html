@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nativefier Command Generator</title>
+  <link rel="shortcut icon" href="Electron.ico" type="image/ico">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px;  background-color: black; color: white;}
+    label { display: block; margin-top: 10px; }
+    input { width: 400px; padding: 5px; }
+    button { margin-top: 15px; padding: 8px 15px; cursor: pointer; }
+    pre { background: black; padding: 10px; margin-top: 15px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <h2>Nativefier Command Generator</h2>
+
+  <label>App Name:
+    <input type="text" id="name" placeholder="RBWar Online">
+  </label>
+
+  <label>App URL:
+    <input type="text" id="url" placeholder="https://rbwar.old-worm.com/release/crazygames/index.html">
+  </label>
+
+  <button onclick="generate()">Generate Command</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    function generate() {
+      const name = document.getElementById("name").value.trim();
+      const url = document.getElementById("url").value.trim();
+
+      if (!name || !url) {
+        document.getElementById("output").textContent = "⚠️ Please enter both a name and a URL.";
+        return;
+      }
+
+      const command = `nativefier --name "${name}" "${url}"`;
+      document.getElementById("output").textContent = command;
+    }
+  </script>
+  <h2>Note: This is not offical Nativefier Software.</h2>
+</body>
+</html>
